@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "wwwroot/css/main.min.css",
+    "inputFiles": [
+      "wwwroot/vendor/fontawesome-free/css/all.min.css",
+      "wwwroot/css/sb-admin-2.min.css",
+      "wwwroot/css/wicommon.css",
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/main.min.js",
+    "inputFiles": [
+      "wwwroot/vendor/jquery/jquery.min.js",
+      "wwwroot/vendor/bootstrap/js/bootstrap.bundle.min.js",
+      "wwwroot/vendor/jquery-easing/jquery.easing.min.js",
+      "wwwroot/js/sb-admin-2.min.js",
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

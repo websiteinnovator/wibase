@@ -1,0 +1,33 @@
+﻿@using WI.Models.Web
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column text-center">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" href="/Identity/Account/Manage">Profile</a></li>
+    @*<li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" href="/Identity/Account/Manage/Email">Email</a></li>*@
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" href="/Identity/Account/Manage/ChangePassword">Password</a></li>
+    @*<li class="nav-item"><a class="nav-link" asp-area="" asp-controller="OrdersHistory" asp-action="Index">Order History</a></li>*@
+    @*<li class="nav-item text-center">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-outline-primary margin-center">Logout</button>
+            </form>
+        </li>*@
+
+
+    @*added prder history link*@
+    @*@if (UserManager.GetUserAsync(User).Result.Is_Admin == true)
+        {
+            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="OrdersHistory" asp-action="IndexAdmin">Customers Order</a></li>
+            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="ProductModels" asp-action="Index">Inventories</a></li>
+            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="PurchaseHistory" asp-action="Index">Incoming Purchases</a></li>
+            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="OutgoingordersHistory" asp-action="Index">Outgoing Orders</a></li>
+            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="CompanyModels" asp-action="Index">Suppliers</a></li>
+            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="RingSizeModels" asp-action="Index">Ring Sizes</a></li>
+
+        }
+        else
+        {
+        }*@
+</ul>

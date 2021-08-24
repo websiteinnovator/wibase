@@ -1,0 +1,5 @@
+User-agent: Libwww-perl
+Disallow: /
+
+User-agent: *
+Disallow: /

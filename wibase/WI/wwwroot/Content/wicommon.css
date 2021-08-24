@@ -1,0 +1,245 @@
+﻿.height10 {
+    height: 10px;
+}
+
+.height20 {
+    height: 20px;
+}
+
+
+.height30 {
+    height: 30px;
+}
+
+nav.navbar-light {
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+}
+
+    nav.navbar-light a {
+        color: #666 !important;
+        font-weight: bold;
+    }
+
+nav .navbar-right li {
+    padding-left: 15px;
+}
+
+nav .navbar-right .paddingtop {
+    /*padding-top: 8px;*/
+}
+
+#menuPanel {
+    color: #ccc;
+}
+
+    #menuPanel a, #menuPanel a:visited {
+        color: #fff;
+        /*text-decoration: underline;*/
+    }
+
+        #menuPanel a:hover, #menuPanel a:active {
+            text-decoration: underline;
+        }
+
+.dropdown-menu {
+    left: auto;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.body-content {
+    /*padding-top: 20px;*/
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wi label {
+    text-align: right;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #eee;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/*label:after {
+    content: " : ";
+}
+*/
+.col-md-offset-2 {
+    margin-left: 16.666667%;
+}
+
+.col-md-offset-4 {
+    margin-left: 33.333333%;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+label.required:after {
+    content: " *** : ";
+    color: red;
+    font-size: 12pt;
+}
+
+.input-validation-error {
+    border: 1px solid red;
+    background-color: #FF9D9B;
+}
+
+span.field-validation-error {
+    font-size: 8pt;
+}
+
+    span.field-validation-error:before {
+        content: " • ";
+    }
+
+/*.btn-default {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14pt;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #ccc;
+    border-color: #999;
+    color: #fff;
+}
+*/
+    .btn-default a {
+    }
+
+
+.btn-primary {
+    background-color: #42b574;
+    border-color: #429E84;
+}
+
+.btncol a {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #ccc;
+    padding: 3px 7px 3px 7px;
+    font-size: 8pt;
+    border-radius: 5px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+    .btncol a:hover {
+        background-color: #ddd;
+    }
+
+
+.fullwidth {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-size: 20pt;
+    text-align: center;
+}
+
+hr {
+    text-align: center;
+    position: relative;
+    top: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+    width: 40px;
+    height: 2px;
+    padding: 0;
+    margin-bottom: 20px;
+    background: -moz-linear-gradient(90deg, #42b574 0%, #84c450 100%);
+    background: -webkit-linear-gradient(90deg, #42b574 0%, #84c450 100%);
+    background: -o-linear-gradient(90deg, #42b574 0%, #84c450 100%);
+    background: -ms-linear-gradient(90deg, #42b574 0%, #84c450 100%);
+    background: linear-gradient(90deg, #42b574 0%, #84c450 100%);
+}
+
+footer {
+    /*border-top: 1px solid #ddd;*/
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #999;
+    font-size: 9pt;
+    text-align: right;
+}
+
+table.table thead tr {
+    background-color: #eee;
+}
+
+.confirm {
+    padding: 15px;
+    color: green;
+    border: 1px solid green;
+    border-radius: 15px;
+}
+
+.logosection {
+    padding: 0;
+}
+
+.bottomBtnRow {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.highlight {
+    background-color: yellow !important;
+}
+
+.lightgreen {
+    background-color: lightgreen;
+}
+
+.note {
+    background-color: beige;
+    padding: 10px;
+    font-size: 8pt;
+}
+
+    .note ol {
+        padding-left: 15px;
+        list-style: decimal;
+    }
+
+    .note ul {
+        padding-left: 15px;
+        list-style: disc;
+    }
+
+.materials{
+    color: mediumseagreen;
+    font-size: 14pt;
+}
+
+.hidden{
+    display: none;
+}

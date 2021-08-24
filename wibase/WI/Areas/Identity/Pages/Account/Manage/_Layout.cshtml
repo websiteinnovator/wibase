@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+@section head{
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />-->
+
+    <!-- Bootstrap Core CSS -->
+    <!--<link href="~/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!-- MetisMenu CSS -->
+    <!--<link href="~/css/metisMenu.min.css" rel="stylesheet">-->
+
+    <!-- Timeline CSS -->
+    <!--<link href="~/css/timeline.css" rel="stylesheet">-->
+
+    <!-- Custom CSS -->
+    <!--<link href="~/css/startmin.css" rel="stylesheet">-->
+
+    <!-- Morris Charts CSS -->
+    <!--<link href="~/css/morris.css" rel="stylesheet">-->
+
+    <!-- Custom Fonts -->
+    <!--<link href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+
+
+}
+
+@*<div class="height100"></div>
+<div class="height100"></div>
+<div class="height30"></div>
+<h2>Manage your account</h2>*@
+
+<div class="container">
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <partial name="/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml" />
+            <div class="height100 tablet-on"></div>
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
+

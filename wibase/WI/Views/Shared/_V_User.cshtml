@@ -1,0 +1,28 @@
+﻿@model WI.Models.Web.ApplicationUser
+
+<div class="userbox">
+    <a href="#" data-toggle="dropdown" aria-expanded="false">
+@*        @Html.Raw(Model.GetImage())*@
+        <div class="profile-info profile-info-no-role" data-lock-name="@Model.FullName" data-lock-email="@Model.Email">
+            <span class="name"><strong class="font-weight-semibold">@Model.FullName</strong><i class="fas fa-chevron-down text-color-dark"></i></span>
+        </div>
+    </a>
+
+    <div class="dropdown-menu" style="">
+        <ul class="list-unstyled">
+            <li>
+                <a role="menuitem" tabindex="-1" href="mailto:@Model.Email">
+                    <i class='fas fa-envelope fa-fw'></i> Email
+                </a>
+            </li>
+            @if (!string.IsNullOrEmpty(Model.PhoneNumber))
+            {
+                <li>
+                    <a role="menuitem" tabindex="-1" href="@($"tel:+1{Model.PhoneNumber}")">
+                        <i class='fas fa-phone fa-fw'></i> Call
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

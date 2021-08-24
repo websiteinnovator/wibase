@@ -1,0 +1,138 @@
+﻿<script>
+    jQuery(document).ready(function ($) {
+
+        //document.title += ' for ' + $("#StoreInfoModelId").find(":selected").text() + ', ' + $('#D_start_from').val() + " to " + $('#D_start_to').val();
+        //$('table.report').first().prepend('<caption><span>Weekly Results</span></caption>');
+
+        Date.prototype.addDays = function (days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+        }
+
+        var today = new Date();
+        var todayFormat = GetDate(today);
+        var yesterday = today.addDays(-1);
+        var yesterdayFormat = GetDate(yesterday);
+        var dayLastweek = today.addDays(-7);
+        var tomorrow = today.addDays(1);
+        var tomorrowFormat = GetDate(tomorrow);
+
+        $('#todayBtn').click(function (e) {
+            $('#D_start_from').val(todayFormat);
+            $('#D_start_to').val(tomorrowFormat);
+        });
+
+        $('#yesterdayBtn').click(function (e) {
+            $('#D_start_from').val(yesterdayFormat);
+            $('#D_start_to').val(yesterdayFormat);
+        });
+
+        $('#weekBtn').click(function (e) {
+            var myMonday = GetMonday(today);
+            var mySunday = myMonday.addDays(6);
+
+            $('#D_start_from').val(GetDate(myMonday));
+            $('#D_start_to').val(GetDate(mySunday));
+
+            // Old way - minus 7 from today
+            //            console.log(mySunday);
+            //var startDate = new Date();
+            //startDate.setDate(startDate.getDate() - 7);
+            //var startDateFormat = GetDate(startDate);
+            //$('#D_start_from').val(startDateFormat);
+            //$('#D_start_to').val(todayFormat);
+        });
+
+        $('#lastWeekBtn').click(function (e) {
+            var myLastMonday = GetMonday(dayLastweek);
+            var myLastSunday = myLastMonday.addDays(6)
+
+            $('#D_start_from').val(GetDate(myLastMonday));
+            $('#D_start_to').val(GetDate(myLastSunday));
+
+            // Debugging
+            //console.log('Original: ' + myLastMonday);
+            //console.log('Original GetDate: ' + myLastMonday.getDate());
+            //console.log('Add Days: ' + myLastMonday.addDays(6));
+            //console.log('Result: ' + myLastSunday);
+            //myLastSunday.setDate(myLastMonday.getDate());
+        });
+
+        $('#monthBtn').click(function (e) {
+            var startThisMonth = new Date();
+            startThisMonth.setDate(1);
+
+            $('#D_start_from').val(GetDate(startThisMonth));
+            $('#D_start_to').val(tomorrowFormat);
+        });
+
+        $('#lastMonthBtn').click(function (e) {
+            var startLastMonth = new Date();
+            startLastMonth.setMonth(startLastMonth.getMonth() - 1);
+            startLastMonth.setDate(1);
+            var endLastMonth = new Date();
+            endLastMonth.setDate(0);
+
+            $('#D_start_from').val(GetDate(startLastMonth));
+            $('#D_start_to').val(GetDate(endLastMonth));
+        });
+
+        $('#lastMonthBtn').click(function (e) {
+            var startLastMonth = new Date();
+            startLastMonth.setMonth(startLastMonth.getMonth() - 1);
+            startLastMonth.setDate(1);
+            var endLastMonth = new Date();
+            endLastMonth.setDate(0);
+
+            $('#D_start_from').val(GetDate(startLastMonth));
+            $('#D_start_to').val(GetDate(endLastMonth));
+        });
+
+        $('#yearBtn').click(function (e) {
+            var startLastMonth = new Date();
+            startLastMonth.setYear(startLastMonth.getYear() + 1900);
+            startLastMonth.setMonth(0);
+            startLastMonth.setDate(1);
+
+            $('#D_start_from').val(GetDate(startLastMonth));
+            $('#D_start_to').val(tomorrowFormat);
+        });
+
+        $("#ClearBtn").click(function (e) {
+            $('#StoreId option[selected="selected"]').each(
+                function () {
+                    $(this).removeAttr('selected');
+                }
+            );
+            $('#D_start_from').val('');
+            $('#D_start_to').val("");
+        });
+
+        $("#DataTables_Table_0_paginate").on("click", "a", function (evt) { evt.preventDefault(); });
+        //$("#DataTables_Table_0_paginate span").on("click", "a", function () { alert("clicked") });
+
+        function GetDate(currentDate) {
+            var day = ("0" + currentDate.getDate()).slice(-2);
+            var month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
+            var year = currentDate.getFullYear();
+            return year + "-" + month + "-" + day;
+        }
+
+        function GetMonday(d) {
+            d = new Date(d);
+            var day = d.getDay(),
+                diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+            return new Date(d.setDate(diff));
+        }
+
+        function GetSunday(d) {
+            d = new Date(d);
+            d.setDate(d.getDate() + (1 + 7 - d.getDay()) % 7);
+            return new Date(d);
+        }
+
+        //$('#tabletopheader').append($('#tabletopfooter'));
+    });
+
+</script>

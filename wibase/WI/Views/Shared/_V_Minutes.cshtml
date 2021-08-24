@@ -1,0 +1,14 @@
+﻿@model int
+
+@if (Model > 0)
+{
+    <text>
+        Total:
+        @Model minutes
+
+        @if (Model > 60)
+        {
+            <partial name="_V_Minutes_hr" model="Model" />
+        }
+    </text>
+}

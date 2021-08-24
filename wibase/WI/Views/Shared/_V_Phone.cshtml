@@ -1,0 +1,14 @@
+﻿@using System
+@using System.Text.RegularExpressions
+@model string
+
+@{
+    if (!string.IsNullOrEmpty(Model))
+    {
+        string phoneNumber = Regex.Replace(Model, @"[^0-9]", "", RegexOptions.None, TimeSpan.FromSeconds(1.5));
+        string phoneFormat = Regex.Replace(phoneNumber, @"(\d{3})(\d{3})(\d{4})", "$1-$2-$3");
+        string phoneTel = $"tel:+1{phoneNumber}";
+        <a href="@phoneTel">@phoneFormat</a>
+    }
+}
+

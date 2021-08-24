@@ -1,0 +1,138 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 btn-primary">
+            <h6 class="m-0 font-weight-bold">@ViewData["Title"]</h6>
+        </div>
+        <div class="card-body">
+            <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+            <form id="profile-form" method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="col-12">
+                        @*<form id="profile-form" method="post">*@
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group">
+                            <label asp-for="Username">User Name</label>
+                            <input asp-for="Username" class="form-control" readonly />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Input.FirstName"></label>
+                                    <input asp-for="Input.FirstName" class="form-control" required />
+                                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Input.LastName"></label>
+                                    <input asp-for="Input.LastName" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label asp-for="Input.PhoneNumber"></label>
+                            <input asp-for="Input.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Input.Message"></label>
+                            <textarea asp-for="Input.Message" rows="4" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Input.ProfileImage"></label>
+                            <input asp-for="Input.ProfileImage" class="form-control" />
+                            <span asp-validation-for="Input.ProfileImage" class="text-danger"></span>
+                            @if (!string.IsNullOrEmpty(Model.Input.ImageFile))
+                    {
+                            <img src="/@WI.Models.Web.SD.FolderProfileImage/@Model.Input.ImageFile" class="profileImage" />
+                    }
+                        </div>
+
+
+
+                        @*<div class="form-group" style="display: block; position: static; height: 25px; margin-top: 10px; clear: both;">*@
+                        @*<div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input style="float:left;" type="checkbox" asp-for="Input.Is_SameAddress" id="myCheck" class="form-control" onclick="myFunction()" />
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label asp-for="Input.Is_SameAddress">Shipping address is same as billing address</label>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        @*<div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Input.Created"></label>
+                                        <input asp-for="Input.Created" class="form-control" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Input.LastAccessed"></label>
+                                        <input asp-for="Input.LastAccessed" class="form-control" readonly />
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+
+    function myFunction() {
+
+        var checkBox = document.getElementById("myCheck");
+        var div_ship = document.getElementById("ship");
+
+        if (checkBox.checked == true) {
+            div_ship.style.display = "none";
+        } else {
+            div_ship.style.display = "initial";
+            div_ship.style.visibility = "visible";
+        }
+    }
+
+    function myOnLoadCheck() {
+        var checkBox = document.getElementById("myCheck");
+        var div_ship = document.getElementById("ship");
+
+        if (checkBox.checked == true) {
+            div_ship.style.display = "none";
+        } else {
+            div_ship.style.display = "initial";
+            div_ship.style.visibility = "visible";
+        }
+    }
+</script>

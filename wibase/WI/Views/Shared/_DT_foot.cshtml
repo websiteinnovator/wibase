@@ -1,0 +1,119 @@
+﻿<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.min.js"></script>
+@*<script src="/js/jquery-ui-1.12.1.min.js"></script>*@
+<script src="/js/dataTables/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables/dataTables.buttons.min.js"></script>
+<script src="/js/dataTables/buttons.flash.min.js"></script>
+<script src="/js/dataTables/jszip.min.js"></script>
+<script src="/js/dataTables/pdfmake.min.js"></script>
+<script src="/js/dataTables/vfs_fonts.js"></script>
+<script src="/js/dataTables/buttons.html5.min.js"></script>
+<script src="/js/dataTables/buttons.print.min.js"></script>
+@*@Scripts.Render("~/bundles/dtfoot")*@
+
+<script>
+    $(document).ready(function () {
+
+        $('.removeselect').each(function (e) {
+            var myspan = $(this);
+            var mytext = myspan.text().trim();
+            if (mytext == "-- SELECT --") {
+                myspan.text("-");
+            }
+        });
+
+        $('.userid').each(function (e) {
+            var myspan = $(this);
+            var myid = myspan.text().trim();
+            $.get("/home/UserInitial", { id: myid })
+                .done(function (data) {
+                    myspan.html(data);
+                });
+        });
+
+        $('table.wi').DataTable(
+            {
+                paging: false,
+                dom: 'Bfrtip',
+                buttons: [
+                    //'copy', 'csv', 'excel', 'pdf',
+                    //'print',
+                    // {
+                    //     extend: 'copyHtml5',
+                    //     exportOptions: {
+                    //         columns: ':gt(0)', orthogonal: 'export'
+                    //     }, footer: true
+                    // },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':gt(0)', orthogonal: 'export'
+                        },
+                        footer: true
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: ':gt(0)', orthogonal: 'export'
+                        },
+                        footer: true
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        exportOptions: {
+                            columns: ':gt(0)', orthogonal: 'export'
+                        },
+                        footer: true
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        exportOptions: {
+                            columns: ':gt(0)', orthogonal: 'export'
+                        },
+                        footer: true
+                    }
+                ],
+                "drawCallback": function (settings, json) {
+                    //$('#overstockTable').show("slow", function () {
+                    //    setTimeout(function () {
+                    //        $("#tableSummary").detach().insertAfter("#tableheader");
+                    //        $body.removeClass("loading");
+                    //    }, 800);
+                    //});
+
+
+                },
+                "order": [],
+
+                //"initComplete": function (settings, json) {
+                //    $('#overstockTable').show("slow", function () {
+                //        setTimeout(function () {
+                //            $("#tableSummary").detach().insertAfter("#tableheader");
+                //            $body.removeClass("loading");
+                //        }, 800);
+                //    });
+                //},
+                //"footerCallback": function (row, data, start, end, display) {
+                //    var api = this.api(), data;
+
+                //    // Remove the formatting to get integer data for summation
+                //    var intVal = function (i) {
+                //        if (i === 'string' && i.indexOf("-") !== -1) {
+                //            return 0;
+                //        }
+                //        else {
+                //            return typeof i === 'string' ?
+                //                i.indexOf("-") == -1 ?
+                //                i.replace(/(<([^>]+)>)/ig, "").replace(/[\$,]/g, '') * 1
+                //                : 0
+                //                :
+                //           typeof i === 'number' && i > 0 ?
+                //                i : 0;
+                //        }
+                //    };
+
+                //}
+            }
+        );
+    });
+</script>

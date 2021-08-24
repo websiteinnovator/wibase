@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-Deli-6AFC969B-6EEC-4A9B-83F1-FF858A4A4040</UserSecretsId>
+    <AssemblyName>WI</AssemblyName>
+    <RootNamespace>WI</RootNamespace>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\images\**" />
+    <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="wwwroot\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Cronos" Version="0.7.0" />
+    <PackageReference Include="log4net" Version="2.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.16" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="Nager.Date" Version="1.29.2" />
+    <PackageReference Include="OpenPop.Core" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Controllers\" />
+    <Folder Include="Areas\Identity\Models\" />
+    <Folder Include="Keys\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
+    <Folder Include="wwwroot\Content\Upload\blog\" />
+    <Folder Include="wwwroot\Content\Upload\site\" />
+    <Folder Include="wwwroot\Content\Upload\task\" />
+    <Folder Include="wwwroot\Content\Upload\profile\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\wimodel\WI.Models\WI.Models\WI.Models.csproj" />
+  </ItemGroup>
+
+</Project>

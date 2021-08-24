@@ -1,0 +1,15 @@
+﻿@model int
+
+@if (Model > 0)
+{
+    var time = TimeSpan.FromMinutes(Model);
+    int hour = (int)time.TotalHours;
+    if (hour > 0)
+    {
+        @string.Format("({0:00}hr {1:00}min)", (int)time.TotalHours, time.Minutes);
+    }
+    else
+    {
+        @string.Format("({0}min)", time.Minutes);
+    }
+}
