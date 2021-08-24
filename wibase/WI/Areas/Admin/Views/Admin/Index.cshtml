@@ -1,0 +1,17 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<WI.Models.Web.AppSettings> settings
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@section head{
+    @*<meta property="og:image" content="@Model.LogoLocation" />*@
+}
+
+<div class="loader"></div>
+
+<div class="w-100 row justify-content-center" style="padding-top: 15vh;">
+    <h2 class="text-center admin-section__heading">
+        Welcome to @settings.Value.Company
+    </h2>
+</div>

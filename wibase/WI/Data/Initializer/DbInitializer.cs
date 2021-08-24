@@ -33,19 +33,29 @@ namespace WI.Data.Initializer
                 Console.Write(ex);
             }
 
-            //string TempAdminEmail = "test@gmail.com";
+            string AdminEmail = "info@websiteinnovator.com";
+            string AdminPassword = "Test!1234";
+            if (_db.Roles.Any(r => r.Name == SD.RoleAdmin)) return;
+            _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin)).GetAwaiter().GetResult();
+            _userManager.CreateAsync(new ApplicationUser
+            {
+                UserName = AdminEmail,
+                Email = AdminEmail,
+                EmailConfirmed = true,
+            }, AdminPassword).GetAwaiter().GetResult();
+            ApplicationUser user3 = _db.ApplicationUsers.Where(u => u.Email == AdminEmail).FirstOrDefault();
+            _userManager.AddToRoleAsync(user3, SD.RoleAdmin).GetAwaiter().GetResult();
 
+
+            //string TempAdminEmail = "test@gmail.com";
             //_userManager.CreateAsync(new ApplicationUser
             //{
             //    UserName = TempAdminEmail,
             //    Email = TempAdminEmail,
             //    EmailConfirmed = true,
-
             //}, "1").GetAwaiter().GetResult();
             //ApplicationUser testuser = _db.ApplicationUsers.Where(u => u.Email == TempAdminEmail).FirstOrDefault();
             //_userManager.AddToRoleAsync(testuser, SD.Admin).GetAwaiter().GetResult();
-
-
             //// Admin User
             //string localAdminEmail = "web@kimengineering.com";
             //if (_db.ApplicationUsers.Any(r => r.Email== localAdminEmail)) return;
@@ -54,12 +64,9 @@ namespace WI.Data.Initializer
             //    UserName = localAdminEmail,
             //    Email = localAdminEmail,
             //    EmailConfirmed = true,
-
             //}, "@Web2021").GetAwaiter().GetResult();
-
             //ApplicationUser user = _db.ApplicationUsers.Where(u => u.Email == localAdminEmail).FirstOrDefault();
             //_userManager.AddToRoleAsync(user, SD.Admin).GetAwaiter().GetResult();
-
             //// Task
             //if (_db.FunctionModel.Count() == 0)
             //{
@@ -70,30 +77,14 @@ namespace WI.Data.Initializer
             //    SaveFunction(new FunctionModel() { Id = SD.FuncTimesheet, Title = "Timesheet" });
             //    SaveFunction(new FunctionModel() { Id = SD.FuncBible, Title = "Bible" });
             //}
-
-            //string AdminEmail = "info@websiteinnovator.com";
-
-            //if (_db.Roles.Any(r => r.Name == SD.AdminSuper)) return;
-            //_roleManager.CreateAsync(new IdentityRole(SD.AdminSuper)).GetAwaiter().GetResult();
-            //ApplicationUser user3 = _db.ApplicationUsers.Where(u => u.Email == AdminEmail).FirstOrDefault();
-            //_userManager.AddToRoleAsync(user3, SD.AdminSuper).GetAwaiter().GetResult();
-
-            //if (_db.Roles.Any(r => r.Name == SD.Admin)) return;
-
-            //_roleManager.CreateAsync(new IdentityRole(SD.Admin)).GetAwaiter().GetResult();
-
-
             //_userManager.CreateAsync(new ApplicationUser
             //{
             //    UserName = AdminEmail,
             //    Email = AdminEmail,
             //    EmailConfirmed = true,
-
             //}, "Test!1234").GetAwaiter().GetResult();
-
             //ApplicationUser user2 = _db.ApplicationUsers.Where(u => u.Email == AdminEmail).FirstOrDefault();
             //_userManager.AddToRoleAsync(user2, SD.Admin).GetAwaiter().GetResult();
-
         }
     }
 }

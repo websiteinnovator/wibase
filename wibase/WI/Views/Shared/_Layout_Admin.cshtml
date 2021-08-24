@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<WI.Models.Web.AppSettings> settings
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SmartBusi</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@settings.Value.Company</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,7 +24,7 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Admin/Index">
+                            <a class="nav-link text-dark" href="/Admin/Admin">
                                 Admin
                             </a>
                         </li>
@@ -31,58 +34,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Role/">
+                            <a class="nav-link text-dark" href="/Admin/Role/">
                                 Role
                             </a>
                         </li>
-                        @*<li class="nav-item">
-            <a class="nav-link text-dark" href="/ClassModels/">
-                Class
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" href="/LectureModels/">
-                Lecture
-            </a>
-        </li>*@
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/BlogCategoryModels/">
-                                Blog Category
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/Blog/AdminIndex">
-                                Blog
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/CommentModels/">
-                                Comment
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/SiteModels/">
-                                Site
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/SiteUserModels/">
-                                Site User
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="/FunctionModels/">
-                                Function
-                            </a>
-                        </li>
-                        @*<li class="nav-item">
-            <a class="nav-link text-dark" href="/Homework/">
-                Homework
-            </a>
-        </li>*@
-                        @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>*@
                     </ul>
                 </div>
             </div>

@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Web
+@using WI.Models.Web
+@model IEnumerable<ApplicationUser>
+
+
+@{
+    var userManager = (UserManager<ApplicationUser>)ViewBag.UserManger;
+}
+
+<h1 class="admin-section__heading">All Users</h1>
+
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(user.ImageFile))
+                    {
+                        <img src="/images/profile/@user.ImageFile" class="profileImage" />
+                    }
+                </td>
+                <td>
+                    @user.FullName
+                </td>
+                <td>
+                    <a href="/role/">
+                        @string.Join(",", (await userManager.GetRolesAsync(user)))
+                        <br />
+                        <a class="btn btn-sm btn-info" href="/admin/role/RoleAddToUser/@HttpUtility.UrlEncode(user.Email)/">Add Role</a>
+                    </a>
+                </td>
+                <td>
+                    @user.Email
+                </td>
+                <td>
+                    @user.PhoneNumber
+                </td>
+                <td>
+                    @user.Message
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

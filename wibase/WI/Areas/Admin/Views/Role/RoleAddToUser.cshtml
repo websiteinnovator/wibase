@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Role Add To User";
+    string myEmail = ViewBag.Email;
+}
+<h2>Role Add to User</h2>
+
+<form method="post" action="/Role/RoleAddToUser">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="message-success">@ViewBag.ResultMessage</div>
+    <p>
+        Username : @Html.TextBox("UserName", myEmail)
+        Role Name: @Html.DropDownList("RoleName", ViewBag.Roles as SelectList)
+
+    </p>
+
+    <input type="submit" value="Save" />
+</form>

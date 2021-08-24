@@ -1,0 +1,81 @@
+﻿@using WI.Models.Web
+@model ApplicationUser
+
+@{
+    ViewBag.Title = "Edit User";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+    <div class="page-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>
+                    @ViewBag.Title
+                </h1>
+
+                <div class="portlet-body ">
+                    <!-- BEGIN FORM-->
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.FirstName, new { @class = "col-md-4 control-label" })
+
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control ", @placeholder = "First Name" })
+                            @Html.ValidationMessageFor(model => model.FirstName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.LastName, new { @class = "col-md-4 control-label" })
+
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control ", @placeholder = "Last Name" })
+                            @Html.ValidationMessageFor(model => model.LastName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "col-md-4 control-label" })
+
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @placeholder = "Email", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">
+                            Role:
+                        </label>
+                        <div class="col-md-8">
+                            @foreach (var item in (List<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)ViewBag.Name)
+                            {
+                                string myChecked = "";
+                                if (((List<string>)ViewBag.MyRoles).Contains(item.Value))
+                                {
+                                    myChecked = " checked='checked' ";
+                                }
+
+                                <input type="checkbox" name="RolesList" value="@item.Value" class="checkbox-inline" @myChecked />
+                                @item.Value
+                                <text>&nbsp;&nbsp;</text>
+                            }
+                            @*@Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, "- Select -", new { @class = "form-control" })*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <input type="submit" value="Submit" class="btn btn-success" />
+                            <div class="bottomBtnRow">
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

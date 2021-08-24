@@ -1,45 +1,46 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using WI.Models.Web 
+@using WI.Models.Web
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 @{
-string myName = "";
-if (User.Identity.IsAuthenticated){
-    var myUser = await UserManager.FindByEmailAsync(User.Identity.Name);
-    myName = myUser.FullName;
-}
+    string myName = "";
+    if (User.Identity.IsAuthenticated)
+    {
+        var myUser = await UserManager.FindByEmailAsync(User.Identity.Name);
+        myName = myUser.FullName;
+    }
 
 }
 
 <ul class="navbar-nav float-right">
     @if (SignInManager.IsSignedIn(User))
     {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello! @*@User.Identity.Name*@ @myName</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">설정</a>
-    </li>
-    @if (User.IsInRole(SD.RoleAdmin))
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello! @*@User.Identity.Name*@ @myName</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">My Profile</a>
+        </li>
+        @if (User.IsInRole(SD.RoleAdmin))
         {
-    <li class="nav-item">
-        <a class="nav-link text-dark" href="/admin" title="Manage">Admin</a>
-    </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/admin/admin" title="Manage">Admin</a>
+            </li>
         }
 
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit" class="nav-link btn btn-link text-dark">로그아웃</button>
-        </form>
-    </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link text-dark">Log off</button>
+            </form>
+        </li>
     }
     else
     {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
     }
 </ul>
