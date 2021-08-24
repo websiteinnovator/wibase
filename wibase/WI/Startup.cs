@@ -3,22 +3,16 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using WI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
 using System.IO;
+using WI.Data;
 using WI.Data.Initializer;
 using WI.Models.Web;
 
@@ -82,8 +76,6 @@ namespace WI
                 options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly("WI.Models")));
-
-
 
             services.AddRazorPages()
                 .AddSessionStateTempDataProvider();

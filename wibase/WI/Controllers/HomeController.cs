@@ -1,17 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Http;
-using System.Text;
 using WI.Data;
-using WI.Models;
 using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
 using WI.Models.Web;
 
 namespace WI.Controllers
